@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light mode */
+:root {
+  --primary: #ffffff; /* White */
+  --secondary: #000000; /* Black */
+  --tertiary: #808080; /* Gray */
+}
+
+/* Dark mode */
+.dark {
+  --primary: rgb(0, 0, 0); /* Black */
+  --secondary: #ffffff; /* White */
+  --tertiary: #a0a0a0; /* Gray */
+}
+
+/* Utility classes for background and text colors */
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--tertiary);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-tertiary {
+  color: var(--tertiary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
