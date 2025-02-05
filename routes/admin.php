@@ -24,5 +24,9 @@ Route::middleware('auth', 'admin')->group(function () {
         return view('pages.admin.meetings');
     })->name('admin.meetings');
 
+    // users
+    Route::get('/admin/users', function () {
+        return view('pages.admin.users');
+    })->name('admin.users');
 });
 

@@ -45,7 +45,6 @@ class User extends Authenticatable
         ];
     }
 
-    // user has role
     public function roles()
     {
         return $this -> belongsToMany(Role::class, 'user_role');
@@ -55,4 +54,5 @@ class User extends Authenticatable
     {
         return $this->roles->contains('name', $role);
     }
+
 }

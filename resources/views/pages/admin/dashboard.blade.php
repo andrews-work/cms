@@ -1,7 +1,5 @@
 @extends('layouts.dashboard')
 
-<!-- create a dashboard layout for admin/client/employee - sidebar and main livewire components? should be easy enough hehe -->
-
 @section('title', 'Dashboard')
 
 @section('content')

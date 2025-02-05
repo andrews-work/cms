@@ -1,4 +1,4 @@
-<!-- resources/views/dashboard/messages.blade.php -->
+
 @extends('layouts.dashboard')
 
 @section('title', 'Messages')

@@ -1,14 +1,14 @@
 
 console.log('darkMode.js - c')
 
-// Function to toggle dark mode
+// toggle
 const toggleDarkMode = () => {
     const htmlElement = document.documentElement;
     const isDark = htmlElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   };
 
-  // Function to initialize theme based on localStorage or system preference
+  // local storage
   const initializeTheme = () => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -20,8 +20,6 @@ const toggleDarkMode = () => {
     }
   };
 
-  // Initialize theme on page load
   initializeTheme();
 
-  // Add event listener to a toggle button
   document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);

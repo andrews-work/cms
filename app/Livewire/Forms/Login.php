@@ -57,7 +57,6 @@ class Login extends Component
         }
     }
 
-    // render
     public function render()
     {
         Log::info('Login form - render method triggered.');

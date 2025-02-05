@@ -5,7 +5,6 @@
         </div>
     @endif
 
-    <!-- Center the form container and control its max width -->
     <div class="flex justify-center max-w-screen-xl gap-8 mx-auto ">
 
         <!-- email -->

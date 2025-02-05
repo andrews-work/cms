@@ -2,28 +2,38 @@
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
         <div class="flex items-center justify-between h-16">
+
+            <!-- name -->
             @auth
                 <p class="text-secondary dark:text-secondary">G'day, {{ auth()->user()->name }}!</p>
             @endauth
 
+            <!-- meeting -->
             <div class="flex">
-                <h1 class="text-secondary dark:text-secondary">time</h1>
+                <h1 class="text-secondary dark:text-secondary">Next meeting: flash time vs minutes/hours too</h1>
+            </div>
+
+            <!-- weather -->
+            <div class="flex">
                 <h1 class="text-secondary dark:text-secondary">weather</h1>
             </div>
 
+            <!-- profile -->
             <div>
-                <!-- Dark mode user icon -->
+                <!-- dark -->
                 <a href="{{ route('profile') }}">
                     <div x-show="darkMode" class="w-6 h-6">
                         <img src="{{ Vite::asset('resources/svg/user-d.svg') }}" alt="user icon">
                     </div>
                 </a>
-                <!-- Light mode user icon -->
+
+                <!-- light -->
                 <a href="{{ route('profile') }}">
                     <div x-show="!darkMode" class="w-6 h-6">
                         <img src="{{ Vite::asset('resources/svg/user.svg') }}" alt="user icon">
                     </div>
                 </a>
+
             </div>
 
         </div>

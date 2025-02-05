@@ -1,4 +1,4 @@
-<!-- resources/views/dashboard/meetings.blade.php -->
+
 @extends('layouts.dashboard')
 
 @section('title', 'Meetings')

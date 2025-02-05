@@ -1,4 +1,4 @@
-<!-- resources/views/dashboard/tasks.blade.php -->
+
 @extends('layouts.dashboard')
 
 @section('title', 'Tasks')

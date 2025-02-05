@@ -16,13 +16,13 @@ class UserSeeder extends Seeder
         $employeeRole = Role::where('name', 'employee')->first();
 
         $adminUser = User::updateOrCreate(
-            ['email' => 'admin@admin.com'], // Check if the email already exists
+            ['email' => 'admin@admin.com'],
             [
                 'name' => 'Admin',
                 'password' => bcrypt('password'),
             ]
         );
-        $adminUser->roles()->sync([$adminRole->id]);  // Use sync to avoid duplicates
+        $adminUser->roles()->sync([$adminRole->id]);
 
         // Client User
         $clientUser = User::updateOrCreate(
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('password'),
             ]
         );
-        $clientUser->roles()->sync([$clientRole->id]);  // Use sync to avoid duplicates
+        $clientUser->roles()->sync([$clientRole->id]);
 
         // Employee User
         $employeeUser = User::updateOrCreate(
@@ -42,6 +42,6 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('password'),
             ]
         );
-        $employeeUser->roles()->sync([$employeeRole->id]);  // Use sync to avoid duplicates
+        $employeeUser->roles()->sync([$employeeRole->id]);
     }
 }

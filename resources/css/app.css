@@ -4,19 +4,18 @@
 
 /* Light mode */
 :root {
-  --primary: #ffffff; /* White */
-  --secondary: #000000; /* Black */
-  --tertiary: #808080; /* Gray */
+  --primary: #ffffff;
+  --secondary: #000000;
+  --tertiary: #808080;
 }
 
 /* Dark mode */
 .dark {
-  --primary: rgb(0, 0, 0); /* Black */
-  --secondary: #ffffff; /* White */
-  --tertiary: #a0a0a0; /* Gray */
+  --primary: rgb(0, 0, 0);
+  --secondary: #ffffff;
+  --tertiary:rgb(88, 87, 87);
 }
 
-/* Utility classes for background and text colors */
 .bg-primary {
   background-color: var(--primary);
 }

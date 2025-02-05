@@ -32,8 +32,6 @@
             </main>
         </div>
 
-        <!-- Footer Component -->
-
         <script src="{{ asset('js/darkMode.js') }}"></script>
     </body>
 </html>

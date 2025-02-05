@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b bg-primary dark:bg-primary border-secondary dark:border-secondary">
+<nav x-data="{ open: false }" class="border-b bg-primary border-secondary">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-6">
         <div class="flex items-center justify-between h-16">
 
@@ -9,15 +9,17 @@
                 </a>
             </div>
 
-            <!-- links -->
+
             <div class="hidden ml-10 space-x-8 md:flex">
-                <a href="{{ route('home') }}" wire:current="border-b" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary dark:text-tertiary hover:text-secondary dark:hover:text-secondary active:text-four dark:active:text-four">
+
+                <!-- links -->
+                <a href="{{ route('home') }}" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary hover:text-primary hover:bg-secondary">
                     Home
                 </a>
-                <a href="{{ route('about') }}" wire:current="border-b" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary dark:text-tertiary hover:text-secondary dark:hover:text-secondary active:text-primary dark:active:text-primary">
+                <a href="{{ route('about') }}" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary hover:text-primary hover:bg-secondary">
                     About
                 </a>
-                <a href="{{ route('contact') }}" wire:current="border-b" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary dark:text-tertiary hover:text-secondary dark:hover:text-secondary active:text-primary dark:active:text-primary">
+                <a href="{{ route('contact') }}" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary hover:text-primary hover:bg-secondary">
                     Contact
                 </a>
 
@@ -39,31 +41,32 @@
                         }
                     @endphp
 
-                    <a href="{{ $dashboardRoute }}" wire:current="border-b" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary dark:text-tertiary hover:text-secondary dark:hover:text-secondary active:text-primary dark:active:text-primary">
+                    <a href="{{ $dashboardRoute }}" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary hover:text-primary hover:bg-secondary">
                         Dashboard
                     </a>
                 @endauth
-            </div>
+                </div>
 
-            <!-- auth + light/dark -->
-            <div class="items-center hidden space-x-6 md:flex">
+                <!-- register / login -->
+                <div class="items-center hidden space-x-6 md:flex">
 
-                <!-- register / login-->
-                <div>
-                    @guest
-                        <a href="{{ route('register') }}" class="px-6 py-1 mr-4 text-lg font-medium transition-all rounded-md text-primary border-tertiary bg-secondary">
-                            Register
-                        </a>
+                    <div>
+                        @guest
+                            <a href="{{ route('register') }}" class="px-6 py-1 mr-4 text-lg font-medium transition-all rounded-md text-secondary hover:text-primary hover:bg-secondary">
+                                Register
+                            </a>
 
-                        <a href="{{ route('login') }}" class="px-6 py-1 text-lg font-medium transition-all rounded-md text-primary border-tertiary bg-secondary">
-                            Login
-                        </a>
-                    @endguest
+                            <a href="{{ route('login') }}" class="px-6 py-1 text-lg font-medium transition-all rounded-md text-secondary hover:text-primary hover:bg-secondary">
+                                Login
+                            </a>
+                        @endguest
 
-                    @auth
-                        <!-- logout -->
-                        <livewire:auth.logout />
-                    @endauth
+                        @auth
+                            <!-- logout -->
+                            <livewire:auth.logout />
+                        @endauth
+                    </div>
+
                 </div>
 
                 <!-- dark / light -->
@@ -84,7 +87,7 @@
             </div>
 
             <!-- Mobile Menu Button (Hidden on larger screens) -->
-            <button @click="open = ! open" class="px-3 py-2 text-lg font-medium transition rounded-md md:hidden text-tertiary dark:text-tertiary hover:text-secondary dark:hover:text-secondary">
+            <button @click="open = ! open" class="px-3 py-2 text-lg font-medium transition rounded-md md:hidden text-tertiary hover:text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -93,7 +96,7 @@
     </div>
 
     <!-- Mobile Menu (Toggles based on "open" state) -->
-    <div x-show="open" class="md:hidden bg-tertiary dark:bg-tertiary">
+    <div x-show="open" class="md:hidden bg-tertiary ">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             @guest
                 <a href="{{ url('/') }}" class="block px-3 py-2 text-base font-medium rounded-md text-secondary dark:text-secondary hover:text-primary dark:hover:text-primary">
