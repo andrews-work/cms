@@ -6,7 +6,7 @@
                 {{ $meetingDay }} - {{ $meetingTimeFormatted }}
             </a>
             w/
-            <a href="{{ route('admin.users', $nextMeeting->attendee->id ?? '#') }}" class="text-blue-600 hover:underline">
+            <a href="{{ route('admin.users', $nextMeeting->attendee->id ?? '#') }}" class="text-blue-300 hover:underline">
                 {{ $attendee ?? 'client' }}
             </a>
             | {{ $timeUntilMeeting }}

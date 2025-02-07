@@ -32,6 +32,41 @@
                             <span class="text-gray-500">No files attached</span>
                         @endif
                     </div>
+
+                    <div class="flex-1 space-y-2 ">
+                        <div>
+                            <!-- dark -->
+                            <a href="{{ route('profile') }}">
+                                <div x-show="darkMode" class="w-6 h-6">
+                                    <img src="{{ Vite::asset('resources/svg/user-d.svg') }}" alt="user icon">
+                                </div>
+                            </a>
+
+                            <!-- light -->
+                            <a href="{{ route('profile') }}">
+                                <div x-show="!darkMode" class="w-6 h-6">
+                                    <img src="{{ Vite::asset('resources/svg/user.svg') }}" alt="user icon">
+                                </div>
+                            </a>
+
+                        </div>
+                        <div>
+                            <!-- dark -->
+                            <a href="{{ route('profile') }}">
+                                <div x-show="darkMode" class="w-6 h-6">
+                                    <img src="{{ Vite::asset('resources/svg/user-d.svg') }}" alt="user icon">
+                                </div>
+                            </a>
+
+                            <!-- light -->
+                            <a href="{{ route('profile') }}">
+                                <div x-show="!darkMode" class="w-6 h-6">
+                                    <img src="{{ Vite::asset('resources/svg/user.svg') }}" alt="user icon">
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>

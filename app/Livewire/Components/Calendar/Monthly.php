@@ -48,6 +48,12 @@ class Monthly extends Component
         return $this->meetings->contains('meeting_date', $date->format('Y-m-d'));
     }
 
+    public function getMeetingDetails($day)
+    {
+        $date = Carbon::create($this->currentYear, Carbon::parse($this->currentMonth)->month, $day);
+        return $this->meetings->firstWhere('meeting_date', $date->format('Y-m-d'));
+    }
+
     public function render()
     {
         return view('livewire.components.calendar.monthly');

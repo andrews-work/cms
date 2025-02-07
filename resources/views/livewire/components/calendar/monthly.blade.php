@@ -18,10 +18,21 @@
                     {{ $day ? '' : 'border-none' }}
                     {{ $day == \Carbon\Carbon::today()->day && \Carbon\Carbon::today()->month == \Carbon\Carbon::parse($currentYear . '-' . $currentMonth)->month && \Carbon\Carbon::today()->year == $currentYear ? 'bg-primary border border-secondary text-secondary font-bold' : '' }}
                     hover:bg-tertiary hover:scale-105
-                    {{ $day && $this->hasMeeting($day) ? 'bg-blue-200' : '' }}">
+                    {{ $day && $this->hasMeeting($day) ? 'bg-primary' : '' }}">
 
                 @if ($day)
                     <span class="absolute text-lg font-semibold top-2 left-2">{{ $day }}</span>
+
+                    {{-- Display meeting details --}}
+                    @if ($this->hasMeeting($day))
+                        @php
+                            $meeting = $this->getMeetingDetails($day);
+                        @endphp
+                        <div class="absolute text-sm text-center bottom-2 left-2">
+                            <p class="font-medium">{{ $meeting->client_name }}</p>
+                            <p class="text-xs">{{ \Carbon\Carbon::parse($meeting->meeting_time)->format('g:i A') }}</p>
+                        </div>
+                    @endif
                 @else
                     &nbsp;
                 @endif

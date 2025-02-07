@@ -16,6 +16,6 @@
         </h1>
 
     @else
-        <h1 class="text-secondary">Weather data unavailable</h1>
+        <h1 class="text-secondary">Update city in profile</h1>
     @endif
 </div>

@@ -29,5 +29,14 @@ Route::middleware('auth', 'employee')->group(function () {
         return view('pages.employee.meetings');
     })->name('employee.meetings');
 
+    // clients
+    Route::get('/employee/clients', function () {
+        return view('pages.employee.clients');
+    })->name('employee.clients');
+
+    // client profile
+    Route::get('/employee/client/{id}', function ($id) {
+        return view('pages.employee.client-profile', ['id' => $id]);
+    })->name('employee.client-profile');
 });
 

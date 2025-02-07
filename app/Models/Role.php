@@ -15,4 +15,20 @@ class Role extends Model
     {
         return $this -> belongsToMany(User::class, 'user_role');
     }
+
+    public function scopeClient($query)
+    {
+        return $query->where('name', 'client');
+    }
+
+    public function scopeEmployss($query)
+    {
+        return $query->where('name', 'employee');
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('name', 'admin');
+    }
+
 }

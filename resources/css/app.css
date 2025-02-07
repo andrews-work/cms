@@ -6,7 +6,8 @@
 :root {
   --primary: #ffffff;
   --secondary: #000000;
-  --tertiary:rgb(179, 179, 179);
+  --tertiary:rgb(155, 155, 155);
+  --four:rgb(210, 208, 208);
 }
 
 /* Dark mode */
@@ -14,6 +15,7 @@
   --primary: rgb(0, 0, 0);
   --secondary: #ffffff;
   --tertiary:rgb(88, 87, 87);
+  --four:rgb(29, 29, 29);
 }
 
 .bg-primary {
@@ -26,6 +28,10 @@
 
 .bg-tertiary {
   background-color: var(--tertiary);
+}
+
+.bg-four {
+    background-color: var(--four);
 }
 
 .text-primary {
