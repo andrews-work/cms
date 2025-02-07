@@ -12,19 +12,18 @@
                     </h3>
                     <div class="space-y-2">
                         <p><strong>Time:</strong> {{ \Carbon\Carbon::parse($meeting->meeting_time)->format('g:i A') }}</p>
-                        <p><strong>With:</strong> Client</p> <!-- Placeholder for the person you're meeting with -->
+                        <p><strong>With:</strong> Client</p>
                         <p><strong>Duration:</strong> {{ $meeting->duration }} minutes</p>
                     </div>
-                    <!-- Reduced space for description -->
+
                     <div class="flex-1 space-y-2">
                         <p><strong>Description:</strong></p>
-                        <p class="h-24 overflow-auto text-sm text-gray-700">{{ $meeting->description }}</p> <!-- Limited space for description -->
+                        <p class="h-24 overflow-auto text-sm text-gray-700">{{ $meeting->description }}</p>
                     </div>
                     <div>
                         <p><strong>Notes:</strong> {{ $meeting->notes ?? 'No additional notes' }}</p>
                     </div>
 
-                    <!-- Increased space for files -->
                     <div class="flex-1 mt-4">
                         <strong>Files:</strong>
                         @if ($meeting->files)

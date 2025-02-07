@@ -16,13 +16,10 @@ class Weekly extends Component
 
     public function generateWeek()
     {
-        // Get the current date
         $today = Carbon::today();
-
-        // Start the week from today
+        
         $this->weekDays = [];
 
-        // Generate the next 7 days starting from today
         for ($i = 0; $i < 7; $i++) {
             $this->weekDays[] = $today->copy()->addDays($i);
         }

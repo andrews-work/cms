@@ -13,18 +13,14 @@ class Daily extends Component
 
     public function mount()
     {
-        $this->currentDate = Carbon::now(); // Get current date
-        $this->currentDay = $this->currentDate->format('l, F j, Y'); // Format for the day (e.g. "Wednesday, February 7, 2025")
+        $this->currentDate = Carbon::now();
+        $this->currentDay = $this->currentDate->format('l, F j, Y');
 
-        $this->loadEvents(); // Load events for today
+        $this->loadEvents();
     }
 
     public function loadEvents()
     {
-        // Assuming you're using an Event model or something similar
-        // $this->events = Event::whereDate('event_date', $this->currentDate)->get();
-
-        // For demo purposes, let's mock some events:
         $this->events = [
             [
                 'title' => 'Morning Meeting',

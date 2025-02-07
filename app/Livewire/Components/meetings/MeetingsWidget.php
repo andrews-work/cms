@@ -37,10 +37,8 @@ class MeetingsWidget extends Component
             $meetingDateTime = Carbon::parse($this->nextMeeting->meeting_date . ' ' . $this->nextMeeting->meeting_time);
             $this->meetingTimeFormatted = $meetingDateTime->format('g:ia');
             $this->meetingDay = $meetingDateTime->isToday() ? 'today' : ($meetingDateTime->isTomorrow() ? 'tomorrow' : $meetingDateTime->format('l'));
-
-            // Check if the meeting is in the future, and modify the diff output to remove "after"
             $timeDifference = $meetingDateTime->diffForHumans(Carbon::now());
-            $this->timeUntilMeeting = preg_replace('/\s*after$/', '', $timeDifference); // Remove "after"
+            $this->timeUntilMeeting = preg_replace('/\s*after$/', '', $timeDifference);
         }
     }
 

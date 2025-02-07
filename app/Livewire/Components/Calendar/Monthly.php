@@ -4,7 +4,7 @@ namespace App\Livewire\Components\Calendar;
 
 use Livewire\Component;
 use Carbon\Carbon;
-use App\Models\Meeting; // Import the Meeting model
+use App\Models\Meeting;
 
 class Monthly extends Component
 {
@@ -13,7 +13,7 @@ class Monthly extends Component
     public $daysInMonth;
     public $firstDayOfMonth;
     public $days;
-    public $meetings; // Hold meetings for the month
+    public $meetings;
 
     public function mount()
     {
@@ -24,7 +24,6 @@ class Monthly extends Component
         $this->firstDayOfMonth = Carbon::createFromDate($this->currentYear, $today->month, 1)->dayOfWeek;
         $this->generateCalendar();
 
-        // Fetch meetings for the current month
         $this->meetings = Meeting::whereMonth('meeting_date', $today->month)
             ->whereYear('meeting_date', $today->year)
             ->get();
@@ -33,17 +32,16 @@ class Monthly extends Component
     public function generateCalendar()
     {
         $this->days = [];
-        // Fill the array with leading empty days for the first day of the month
+
         for ($i = 0; $i < $this->firstDayOfMonth; $i++) {
             $this->days[] = null;
         }
-        // Add days of the month
+
         for ($i = 1; $i <= $this->daysInMonth; $i++) {
             $this->days[] = $i;
         }
     }
 
-    // Method to check if there's a meeting on a given day
     public function hasMeeting($day)
     {
         $date = Carbon::create($this->currentYear, Carbon::parse($this->currentMonth)->month, $day);

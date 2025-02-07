@@ -18,21 +18,17 @@ class WeatherWidget extends Component
 
     public function fetchWeatherData()
     {
-        // Get the authenticated user
         $user = Auth::user();
 
-        // Check if the user is authenticated and has a city set
         if ($user && $user->city) {
             $apiKey = config('services.weather.api');
             $city = $user->city;
             $url = "https://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric";
 
-            // Log the API URL and key (for debugging purposes)
             Log::info('Fetching weather data from URL:', ['url' => $url]);
 
             $response = Http::get($url);
 
-            // Log the full response (for debugging purposes)
             Log::info('API Response:', [
                 'status' => $response->status(),
                 'body' => $response->body(),
@@ -40,16 +36,9 @@ class WeatherWidget extends Component
 
             if ($response->successful()) {
                 $this->weatherData = $response->json();
-
-                // Round the temperature down to the nearest integer
                 $this->weatherData['main']['temp'] = floor($this->weatherData['main']['temp']);
-
-                // Extract and format the cloud icon URL
                 $this->weatherData['cloud_icon_url'] = $this->getCloudIconUrl($this->weatherData['weather'][0]['icon']);
-
-                // Convert wind speed from m/s to km/h
                 $this->weatherData['wind']['speed_kmh'] = floor($this->convertWindSpeedToKmh($this->weatherData['wind']['speed']));
-
                 Log::info('Weather data fetched successfully:', $this->weatherData);
             } else {
                 $this->weatherData = null;
@@ -64,26 +53,14 @@ class WeatherWidget extends Component
         }
     }
 
-    /**
-     * Get the cloud icon URL based on the icon code from the API.
-     *
-     * @param string $iconCode
-     * @return string
-     */
     protected function getCloudIconUrl($iconCode)
     {
         return "https://openweathermap.org/img/wn/{$iconCode}@2x.png";
     }
 
-    /**
-     * Convert wind speed from meters per second (m/s) to kilometers per hour (km/h).
-     *
-     * @param float $windSpeedMps
-     * @return float
-     */
     protected function convertWindSpeedToKmh($windSpeedMps)
     {
-        return $windSpeedMps * 3.6; // 1 m/s = 3.6 km/h
+        return $windSpeedMps * 3.6;
     }
 
     public function render()
