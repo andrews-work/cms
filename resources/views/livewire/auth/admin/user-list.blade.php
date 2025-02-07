@@ -1,6 +1,6 @@
 <div class="flex justify-center w-full">
     <div class="w-2/3 p-4">
-
+        <!-- Tab names -->
         <div class="flex mb-6 space-x-4">
             @foreach($tabs as $tabKey => $tabName)
                 <button wire:click="$set('selectedTab', '{{ $tabKey }}')"
@@ -10,20 +10,9 @@
             @endforeach
         </div>
 
-        <!-- switch tabs -->
+        <!-- Switch tabs -->
         <div class="mt-4">
-            @if($selectedTab == '1')
-                <livewire:components.user-table :users="$users" />
-            @elseif($selectedTab == '2')
-                <livewire:components.user-table :users="$users" />
-            @elseif($selectedTab == '3')
-                <livewire:components.user-table :users="$users" />
-            @elseif($selectedTab == '4')
-                <livewire:components.user-table :users="$users" />
-            @else
-                <p class="text-lg text-center">{{ $tabValues[$selectedTab] }}</p>
-            @endif
+            <livewire:components.user-table :users="$users" :key="'tab-' . $selectedTab" />
         </div>
-
     </div>
 </div>

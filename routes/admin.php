@@ -19,6 +19,11 @@ Route::middleware('auth', 'admin')->group(function () {
         return view('pages.admin.tasks');
     })->name('admin.tasks');
 
+    // calendar
+    Route::get('/admin/calendar', function () {
+        return view('pages.admin.calendar');
+    })->name('admin.calendar');
+
     // meetings
     Route::get('/admin/meetings', function () {
         return view('pages.admin.meetings');

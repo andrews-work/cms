@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Forms;
+namespace App\Livewire\Forms\Profile;
 
 use Livewire\Component;
 use Livewire\Attributes\Validate;
@@ -43,6 +43,6 @@ class UpdateEmail extends Component
 
     public function render()
     {
-        return view('livewire.forms.update-email');
+        return view('livewire.forms.profile.update-email');
     }
 }

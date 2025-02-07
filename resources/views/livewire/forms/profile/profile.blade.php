@@ -8,16 +8,16 @@
     <div class="flex justify-center max-w-screen-xl gap-8 mx-auto ">
 
         <!-- email -->
-        <livewire:forms.update-email />
+        <livewire:forms.profile.update-email />
 
         <!-- password -->
-        <livewire:forms.update-password />
+        <livewire:forms.profile.update-password />
 
         <!-- city -->
-        <livewire:forms.update-city />
+        <livewire:forms.profile.update-city />
 
         <!-- name -->
-        <livewire:forms.update-name />
+        <livewire:forms.profile.update-name />
 
     </div>
 </div>

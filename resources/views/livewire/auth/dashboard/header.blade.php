@@ -8,14 +8,14 @@
                 <p class="text-secondary dark:text-secondary">G'day, {{ auth()->user()->name }}!</p>
             @endauth
 
-            <!-- meeting -->
-            <div class="flex">
-                <h1 class="text-secondary dark:text-secondary">Next meeting: flash time vs minutes/hours too</h1>
-            </div>
-
             <!-- weather -->
             <div class="flex">
-                <h1 class="text-secondary dark:text-secondary">weather</h1>
+                <livewire:components.weather-widget />
+            </div>
+
+            <!-- meeting -->
+            <div class="flex">
+                <livewire:components.meetings.meetings-widget />
             </div>
 
             <!-- profile -->

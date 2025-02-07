@@ -8,7 +8,7 @@
         <h1 class="mb-4 mt-[15vh] text-4xl font-bold text-center">Update Profile</h1>
 
         <div class="mt-[10vh]">
-            <livewire:forms.profile />
+            <livewire:forms.profile.profile />
         </div>
     </div>
 @endsection

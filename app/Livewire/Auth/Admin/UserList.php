@@ -5,10 +5,10 @@ namespace App\Livewire\Auth\Admin;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 
 class UserList extends Component
 {
-    // tab titles
     public $tabs = [
         '1' => 'All',
         '2' => 'Admins',
@@ -20,7 +20,6 @@ class UserList extends Component
     public $selectedTab = '1';
     public $users = [];
 
-    // tab content
     public $tabValues = [
         '1' => 'Users List',
         '2' => 'Hello from Tab 2',
@@ -29,12 +28,10 @@ class UserList extends Component
         '5' => 'Coming later once i do session/cookies/cache',
     ];
 
-    // load content
     public function loadTabContent($tab)
     {
         Log::info("Selected Tab: " . $tab);
 
-        // click tab
         switch ($tab) {
             case '1':
                 $this->users = User::all();
@@ -63,13 +60,11 @@ class UserList extends Component
         }
     }
 
-    // switch tabs
     public function updatedSelectedTab($tab)
     {
         $this->loadTabContent($tab);
     }
 
-    // mount
     public function mount()
     {
         $this->loadTabContent($this->selectedTab);

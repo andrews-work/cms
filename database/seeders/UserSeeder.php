@@ -10,38 +10,34 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // Admin User
-        $adminRole = Role::where('name', 'admin')->first();
-        $clientRole = Role::where('name', 'client')->first();
-        $employeeRole = Role::where('name', 'employee')->first();
+        // roles exist
+        $roles = ['admin', 'client', 'employee'];
+        $roles = Role::whereIn('name', $roles)->pluck('id', 'name');
 
-        $adminUser = User::updateOrCreate(
-            ['email' => 'admin@admin.com'],
+        if ($roles->count() !== 3) {
+            throw new \Exception('One or more roles not found in the database.');
+        }
+
+        // roles
+        $this->createUser('admin@admin.com', 'Admin', 'password', $roles['admin']);
+        $this->createUser('client@client.com', 'Client', 'password', $roles['client']);
+        $this->createUser('emp@emp.com', 'Employee', 'password', $roles['employee']);
+
+        // clients - test
+        for ($i = 1; $i <= 10; $i++) {
+            $this->createUser("client{$i}@client.com", "Test Client {$i}", 'password', $roles['client']);
+        }
+    }
+
+    private function createUser($email, $name, $password, $roleId)
+    {
+        $user = User::updateOrCreate(
+            ['email' => $email],
             [
-                'name' => 'Admin',
-                'password' => bcrypt('password'),
+                'name' => $name,
+                'password' => bcrypt($password),
             ]
         );
-        $adminUser->roles()->sync([$adminRole->id]);
-
-        // Client User
-        $clientUser = User::updateOrCreate(
-            ['email' => 'client@client.com'],
-            [
-                'name' => 'Client',
-                'password' => bcrypt('password'),
-            ]
-        );
-        $clientUser->roles()->sync([$clientRole->id]);
-
-        // Employee User
-        $employeeUser = User::updateOrCreate(
-            ['email' => 'emp@emp.com'],
-            [
-                'name' => 'Employee',
-                'password' => bcrypt('password'),
-            ]
-        );
-        $employeeUser->roles()->sync([$employeeRole->id]);
+        $user->roles()->sync([$roleId]);
     }
 }

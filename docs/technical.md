@@ -10,6 +10,8 @@ L ivewire - 3.0
 
 - custom role based auth
 - light / dark mode
+- view pages if authorised: profile, messages, tasks, meetings
+- admin can view users: update role, delete users
 
 
 # feature ideas

@@ -19,6 +19,11 @@ Route::middleware('auth', 'employee')->group(function () {
         return view('pages.employee.tasks');
     })->name('employee.tasks');
 
+    // calendar
+    Route::get('/employee/calendar', function () {
+        return view('pages.employee.calendar');
+    })->name('employee.calendar');
+
     // meetings
     Route::get('/employee/meetings', function () {
         return view('pages.employee.meetings');
