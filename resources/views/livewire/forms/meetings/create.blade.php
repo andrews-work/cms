@@ -42,7 +42,7 @@
                             class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required>
                             <option value="" disabled selected>Select Meeting Time</option>
                             @foreach (range(9, 18) as $hour)
-                                @foreach (['00', '15', '30', '45'] as $minute) <!-- 15 minute intervals -->
+                                @foreach (['00', '15', '30', '45'] as $minute)
                                     <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">
                                         {{ sprintf('%02d:%02d', $hour, $minute) }}
                                     </option>
@@ -60,7 +60,7 @@
                         <select id="duration" wire:model="duration"
                             class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required>
                             <option value="" disabled selected>Select Duration</option>
-                            @foreach (range(15, 90, 15) as $duration) <!-- 15-minute intervals up to 90 -->
+                            @foreach (range(15, 90, 15) as $duration)
                                 <option value="{{ $duration }}">{{ $duration }} minutes</option>
                             @endforeach
                         </select>

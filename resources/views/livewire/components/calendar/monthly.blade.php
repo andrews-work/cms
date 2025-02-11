@@ -31,7 +31,7 @@
                         @endphp
                         <div class="absolute flex text-xs bottom-2 left-2">
                             <div class="flex items-center space-x-1">
-                                <span class="font-medium">{{ $meetingTime }}</span> <!-- Display formatted meeting time -->
+                                <span class="font-medium">{{ $meetingTime }}</span>
                             </div>
                             <div class="flex items-center ml-2 space-x-1">
                                 <span>w/ {{ $meeting->client ? $meeting->client->name : 'No client assigned' }}</span>

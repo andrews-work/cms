@@ -11,10 +11,8 @@ use App\Models\User;
 
 class Create extends Component
 {
-    // Show/Hide the modal
     public $showCreateForm = false;
 
-    // Meeting fields
     #[Validate('required|date')]
     public $meeting_date;
 
@@ -24,16 +22,13 @@ class Create extends Component
     #[Validate('required|integer|min:1')]
     public $duration;
 
-    // Client selection
     public $client_id;
 
-    // Method to toggle modal visibility
     public function toggleCreateForm()
     {
         $this->showCreateForm = !$this->showCreateForm;
     }
 
-    // Method to handle form submission
     public function submit()
     {
         Log::info('Creating new meeting', [
@@ -43,15 +38,13 @@ class Create extends Component
             'client_id' => $this->client_id,
         ]);
 
-        // Validate the form
         $this->validate();
 
         Log::info('Meeting validated');
 
-        // Create the meeting record
         $meeting = Meeting::create([
-            'user_id' => auth()->id(), // The employee creating the meeting
-            'client_id' => $this->client_id, // The client selected
+            'user_id' => auth()->id(),
+            'client_id' => $this->client_id,
             'meeting_date' => $this->meeting_date,
             'meeting_time' => $this->meeting_time,
             'duration' => $this->duration,
@@ -60,29 +53,24 @@ class Create extends Component
         $this->dispatch('meetingCreated')->to(Show::class);
         Log::info('Meeting dispatched to ShowMeetings');
 
-        // Success message
         session()->flash('message', 'Meeting created successfully!');
 
-        // Reset the form and close the modal
         $this->resetForm();
         $this->showCreateForm = false;
     }
 
-    // Method to reset form fields
     public function resetForm()
     {
         $this->meeting_date = '';
         $this->meeting_time = '';
         $this->duration = '';
-        $this->client_id = ''; // Reset client selection
+        $this->client_id = '';
     }
 
-    // Render method
     public function render()
     {
-        // Pass all users to the view (to populate the client dropdown)
         $clients = User::whereHas('roles', function($query) {
-            $query->where('name', 'client'); // Assuming 'client' is a role
+            $query->where('name', 'client');
         })->get();
 
         return view('livewire.forms.meetings.create', compact('clients'));
