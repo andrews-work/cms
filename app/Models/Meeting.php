@@ -14,6 +14,7 @@ class Meeting extends Model
         'user_id',
         'meeting_date',
         'meeting_time',
+        'client_id',
         'duration',
         'description',
         'notes',
@@ -22,6 +23,12 @@ class Meeting extends Model
 
     public function User()
     {
-        return $this->belongsToMany((User::class));
+        return $this->belongsTo((User::class));
+    }
+
+    // to attach client to meetings
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Forms\Meetings\Edit;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth', 'employee')->group(function () {
@@ -24,10 +25,15 @@ Route::middleware('auth', 'employee')->group(function () {
         return view('pages.employee.calendar');
     })->name('employee.calendar');
 
-    // meetings
+    // meetings - show
     Route::get('/employee/meetings', function () {
         return view('pages.employee.meetings');
     })->name('employee.meetings');
+
+        // edit
+        // Route::get('/employee/meetings/edit', function () {
+        //     return view('pages.employee.meetings.edit');
+        // })
 
     // clients
     Route::get('/employee/clients', function () {

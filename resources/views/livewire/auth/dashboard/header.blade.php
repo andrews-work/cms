@@ -15,7 +15,7 @@
 
             <!-- meeting -->
             <div class="flex">
-                <livewire:components.meetings.meetings-widget />
+                <livewire:components.meetings.widget />
             </div>
 
             <!-- profile -->
@@ -33,7 +33,7 @@
                         <img src="{{ Vite::asset('resources/svg/user.svg') }}" alt="user icon">
                     </div>
                 </a>
-                
+
             </div>
 
         </div>

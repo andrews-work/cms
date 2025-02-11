@@ -1,31 +1,30 @@
 # current 
 
-- more pest testing
-- admin panel 
-    - users
-    - calendar's
-    - analytics
-- employee panel - clients
-- implement companies and teams - see if i can set this up in 2 stages, stage 2 being multi tenant db (architectue)
+- plan come up with stages tomorrow: 
+    - stage 1: UI + some basics done 
+    - stage 2: finish meetings
+    - stage 3: finish tasks
+    - calendar should also be finished as a result of 2 and 3
+    - stage 4: finish clients (search / pagination / profile for employee's)
+    - stage 5: messages
+    - stage 6: file storage
+    - stage 7: client details
+    - stage 8: document autofill
+    - stage 9: update authentication
+    - stage 10: 
 
-# future
-
-- api for AI
-- messaging
-- caching
-- complex user session
-- task manager
-- meetings: zoom or custom
-- multi tenant - set this up soon
-
-- admin dashboard
-    - users
-    - calendar's
-    - analytics
-
-- employee dashboard
-    - clients
-    -  
+- future
+    - multi tenant
+    - custom colors
+    - AI chat for law
+    - zoom for meetings
+    - caching
+    - companies / teams
+    - multi tenant db
+    - admin analytics
+    - implement blogs for new clients
+    - implement forums? 
+    
 
 # UI updates
 
@@ -99,6 +98,8 @@
 # meetings
 
 - have button to view by vertical scroll
+- have meetings dissapear after they end
+- old meetings should still be shown in the clients profile
 
 
 # client's list - employee

@@ -6,13 +6,24 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 
 class WeatherWidget extends Component
 {
     public $weatherData;
+    public $city;
 
     public function mount()
     {
+        $this->fetchWeatherData();
+    }
+
+    #[On('cityUpdate')]
+    public function updateCity()
+    {
+        Log::info('Updated city - received in weather widget');
+
+        $this->city = Auth::user()->city;
         $this->fetchWeatherData();
     }
 

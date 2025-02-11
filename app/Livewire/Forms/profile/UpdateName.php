@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms\Profile;
 
+use App\Livewire\Components\Meetings\Widget;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,8 @@ class UpdateName extends Component
             $user -> save();
 
             session() -> flash('message', 'name updated successfully');
+            $this->dispatch('updatedName')->to(Widget::class);
+            Log::info('updated name');
 
         } catch (\Exception $e) {
 

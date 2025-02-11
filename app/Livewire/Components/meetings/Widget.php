@@ -7,14 +7,16 @@ use Carbon\Carbon;
 use App\Models\Meeting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 
-class MeetingsWidget extends Component
+class Widget extends Component
 {
     public $nextMeeting;
     public $meetingTimeFormatted;
     public $meetingDay;
     public $timeUntilMeeting;
     public $attendee;
+    public $name;
 
     public function mount()
     {
@@ -42,10 +44,19 @@ class MeetingsWidget extends Component
         }
     }
 
+    #[On('updatedName')]
+    public function updateCity()
+    {
+        Log::info('Updated name - received in weather widget');
+
+        $this->name = Auth::user()->name;
+
+        return render();
+    }
 
 
     public function render()
     {
-        return view('livewire.components.meetings.meetings-widget');
+        return view('livewire.components.meetings.widget');
     }
 }

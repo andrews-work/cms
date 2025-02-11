@@ -9,7 +9,6 @@
 
     <!-- Modal Content -->
     <div x-show="showCreateForm" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" x-show.transition.opacity="showCreateForm" class="fixed inset-0 z-50 flex items-center justify-center">
-
         <div class="p-6 rounded-lg shadow-lg bg-tertiary w-96">
             <!-- Modal Header -->
             <div class="flex items-center justify-between">
@@ -23,19 +22,15 @@
 
             <!-- Modal Body -->
             <div class="mt-4">
-                <form action="{{ route('contact') }}" method="POST">
-                    @csrf
-
+                <form wire:submit.prevent="submit">
                     <!-- Meeting Date -->
                     <div class="mb-4">
                         <label for="meeting_date" class="block text-sm font-medium text-secondary">
                             Meeting Date
                         </label>
-                        <input type="date" id="meeting_date" name="meeting_date" value="{{ old('meeting_date') }}"
+                        <input type="date" id="meeting_date" wire:model="meeting_date"
                             class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required>
-                        @error('meeting_date')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                        @error('meeting_date') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Meeting Time -->
@@ -43,11 +38,18 @@
                         <label for="meeting_time" class="block text-sm font-medium text-secondary">
                             Meeting Time
                         </label>
-                        <input type="time" id="meeting_time" name="meeting_time" value="{{ old('meeting_time') }}"
+                        <select id="meeting_time" wire:model="meeting_time"
                             class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required>
-                        @error('meeting_time')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                            <option value="" disabled selected>Select Meeting Time</option>
+                            @foreach (range(9, 18) as $hour)
+                                @foreach (['00', '15', '30', '45'] as $minute) <!-- 15 minute intervals -->
+                                    <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">
+                                        {{ sprintf('%02d:%02d', $hour, $minute) }}
+                                    </option>
+                                @endforeach
+                            @endforeach
+                        </select>
+                        @error('meeting_time') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Duration -->
@@ -55,45 +57,30 @@
                         <label for="duration" class="block text-sm font-medium text-secondary">
                             Duration (Minutes)
                         </label>
-                        <input type="number" id="duration" name="duration" value="{{ old('duration') }}"
-                            class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" min="1">
-                        @error('duration')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                        <select id="duration" wire:model="duration"
+                            class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" required>
+                            <option value="" disabled selected>Select Duration</option>
+                            @foreach (range(15, 90, 15) as $duration) <!-- 15-minute intervals up to 90 -->
+                                <option value="{{ $duration }}">{{ $duration }} minutes</option>
+                            @endforeach
+                        </select>
+                        @error('duration') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
                     </div>
 
-                    <!-- Description -->
-                    <div class="mb-4">
-                        <label for="description" class="block text-sm font-medium text-secondary">
-                            Description
-                        </label>
-                        <textarea id="description" name="description" class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">{{ old('description') }}</textarea>
-                        @error('description')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
 
-                    <!-- Notes -->
+                    <!-- Client Selection -->
                     <div class="mb-4">
-                        <label for="notes" class="block text-sm font-medium text-secondary">
-                            Notes
+                        <label for="client_id" class="block text-sm font-medium text-secondary">
+                            Select Client
                         </label>
-                        <textarea id="notes" name="notes" class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">{{ old('notes') }}</textarea>
-                        @error('notes')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- File Upload -->
-                    <div class="mb-4">
-                        <label for="files" class="block text-sm font-medium text-secondary">
-                            Attach Files
-                        </label>
-                        <input type="file" id="files" name="files[]" multiple
+                        <select id="client_id" wire:model="client_id"
                             class="block px-3 py-2 mt-1 border rounded-md shadow-sm bg-primary text-secondary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
-                        @error('files')
-                            <span class="text-sm text-red-500">{{ $message }}</span>
-                        @enderror
+                            <option value="">Select Client</option>
+                            @foreach($clients as $client)
+                                <option value="{{ $client->id }}">{{ $client->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('client_id') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Modal Footer -->

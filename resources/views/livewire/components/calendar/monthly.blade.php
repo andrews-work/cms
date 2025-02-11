@@ -27,10 +27,15 @@
                     @if ($this->hasMeeting($day))
                         @php
                             $meeting = $this->getMeetingDetails($day);
+                            $meetingTime = \Carbon\Carbon::parse($meeting->meeting_time)->format('g:i A'); // Convert to Carbon instance and format
                         @endphp
-                        <div class="absolute text-sm text-center bottom-2 left-2">
-                            <p class="font-medium">{{ $meeting->client_name }}</p>
-                            <p class="text-xs">{{ \Carbon\Carbon::parse($meeting->meeting_time)->format('g:i A') }}</p>
+                        <div class="absolute flex text-xs bottom-2 left-2">
+                            <div class="flex items-center space-x-1">
+                                <span class="font-medium">{{ $meetingTime }}</span> <!-- Display formatted meeting time -->
+                            </div>
+                            <div class="flex items-center ml-2 space-x-1">
+                                <span>w/ {{ $meeting->client ? $meeting->client->name : 'No client assigned' }}</span>
+                            </div>
                         </div>
                     @endif
                 @else

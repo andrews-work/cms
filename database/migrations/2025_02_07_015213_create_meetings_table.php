@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            // person who is invited to the meeting
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // employee
+            $table->foreignId('client_id')->nullable()->constrained('users')->onDelete('cascade'); // client
             $table->date('meeting_date');
             $table->time('meeting_time');
             $table->integer('duration')->nullable();

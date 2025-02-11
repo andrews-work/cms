@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
 use Illuminate\Support\Facades\Log;
+use App\Models\Meeting;
 
 class User extends Authenticatable
 {
@@ -55,4 +56,8 @@ class User extends Authenticatable
         return $this->roles->contains('name', $role);
     }
 
+    public function meetings()
+    {
+        return $this -> belongsToMany(Meeting::class);
+    }
 }

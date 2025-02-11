@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Livewire\Components\WeatherWidget;
 
 class UpdateCity extends Component
 {
@@ -30,6 +31,9 @@ class UpdateCity extends Component
                 $user->save();
 
                 session()->flash('message', 'City updated successfully!');
+
+                $this -> dispatch('cityUpdate')->to(WeatherWidget::class);
+                Log::info('updated city');
             } else {
 
                 session()->flash('message', 'No changes were made to the city.');

@@ -3,5 +3,5 @@
     <livewire:forms.meetings.create />
 
     <!-- Show Meetings -->
-    <livewire:components.meetings.meetings-show />
+    <livewire:components.meetings.show />
 </div>

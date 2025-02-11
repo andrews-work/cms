@@ -4,7 +4,7 @@ namespace App\Livewire\Components\Meetings;
 
 use Livewire\Component;
 
-class Meetings extends Component
+class View extends Component
 {
     public $showCreateForm = false;
 
@@ -15,6 +15,6 @@ class Meetings extends Component
 
     public function render()
     {
-        return view('livewire.components.meetings.meetings');
+        return view('livewire.components.meetings.view');
     }
 }
