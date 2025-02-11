@@ -51,7 +51,7 @@ class Widget extends Component
 
         $this->name = Auth::user()->name;
 
-        return render();
+        return view();
     }
 
 
