@@ -75,11 +75,11 @@
                     <button id="darkModeToggle" class="p-2 rounded" @click="darkMode = !darkMode">
                         <!-- Sun icon for dark mode -->
                         <div x-show="darkMode" class="w-6 h-6">
-                            <img src="{{ Vite::asset('resources/svg/moon.svg') }}" alt="Moon Icon">
+                            <img id="moonIcon" alt="Moon Icon">
                         </div>
                         <!-- Moon icon for light mode -->
                         <div x-show="!darkMode" class="w-6 h-6">
-                            <img src="{{ Vite::asset('resources/svg/sun.svg') }}" alt="Sun Icon">
+                            <img id="sunIcon" alt="Sun Icon">
                         </div>
                     </button>
                 </div>
