@@ -5,4 +5,4 @@
 3. sessions / cookie
 4. register page not done
 5. figured out the issue i think
-6. didnt figure it out, trying again
+6. didnt figure it out, again
