@@ -25,12 +25,12 @@ class DatabaseSeeder extends Seeder
         }
 
         // Check and log if TasksSeeder exists
-        // if (class_exists(TasksSeeder::class)) {
-        //     Log::info('TasksSeeder class exists. Starting seeder...');
-        //     $this->call(TasksSeeder::class);
-        // } else {
-        //     Log::warning('TasksSeeder class does not exist.');
-        // }
+        if (class_exists(TasksSeeder::class)) {
+            Log::info('TasksSeeder class exists. Starting seeder...');
+            $this->call(TasksSeeder::class);
+        } else {
+            Log::warning('TasksSeeder class does not exist.');
+        }
 
         // Check and log if UserSeeder exists
         if (class_exists(UserSeeder::class)) {
