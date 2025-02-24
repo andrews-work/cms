@@ -1,6 +1,4 @@
-<nav x-data="{ open: false, darkMode: localStorage.getItem('theme') === 'dark' }"
-     x-init="darkMode = localStorage.getItem('theme') === 'dark';"
-     class="border-b bg-primary border-secondary">
+<nav x-data="{ open: false }" class="border-b bg-primary border-secondary">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-6">
         <div class="flex items-center justify-between h-16">
 
@@ -11,7 +9,9 @@
                 </a>
             </div>
 
+
             <div class="hidden ml-10 space-x-8 md:flex">
+
                 <!-- links -->
                 <a href="{{ route('home') }}" class="px-3 py-2 text-lg font-medium transition rounded-md text-secondary hover:text-primary hover:bg-secondary">
                     Home
@@ -45,48 +45,54 @@
                         Dashboard
                     </a>
                 @endauth
-            </div>
-
-            <!-- register / login -->
-            <div class="items-center hidden space-x-6 md:flex">
-                <div>
-                    @guest
-                        <a href="{{ route('register') }}" class="px-6 py-1 mr-4 text-lg font-medium transition-all rounded-md text-secondary hover:text-primary hover:bg-secondary">
-                            Register
-                        </a>
-                        <a href="{{ route('login') }}" class="px-6 py-1 text-lg font-medium transition-all rounded-md text-secondary hover:text-primary hover:bg-secondary">
-                            Login
-                        </a>
-                    @endguest
-                    @auth
-                        <!-- logout -->
-                        <livewire:auth.logout />
-                    @endauth
                 </div>
+
+                <!-- register / login -->
+                <div class="items-center hidden space-x-6 md:flex">
+
+                    <div>
+                        @guest
+                            <a href="{{ route('register') }}" class="px-6 py-1 mr-4 text-lg font-medium transition-all rounded-md text-secondary hover:text-primary hover:bg-secondary">
+                                Register
+                            </a>
+
+                            <a href="{{ route('login') }}" class="px-6 py-1 text-lg font-medium transition-all rounded-md text-secondary hover:text-primary hover:bg-secondary">
+                                Login
+                            </a>
+                        @endguest
+
+                        @auth
+                            <!-- logout -->
+                            <livewire:auth.logout />
+                        @endauth
+                    </div>
+
+                </div>
+
+                <!-- dark / light -->
+                <div x-data="{ darkMode: false }">
+                    <!-- Dark / Light Mode Toggle Button -->
+                    <button id="darkModeToggle" class="p-2 rounded" @click="darkMode = !darkMode">
+                        <!-- Sun icon for dark mode -->
+                        <div x-show="darkMode" class="w-6 h-6">
+                            <img id="moonIcon" alt="Moon Icon">
+                        </div>
+                        <!-- Moon icon for light mode -->
+                        <div x-show="!darkMode" class="w-6 h-6">
+                            <img id="sunIcon" alt="Sun Icon">
+                        </div>
+                    </button>
+                </div>
+
             </div>
 
-            <!-- Dark/Light Mode Toggle -->
-            <div x-data="{ darkMode: localStorage.getItem('theme') === 'dark' }"
-                 x-init="darkMode = localStorage.getItem('theme') === 'dark';">
-                <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light');">
-                    <!-- Sun icon for dark mode -->
-                    <div x-show="darkMode" class="w-6 h-6">
-                        <img id="moonIcon" alt="Moon Icon" src="/path/to/dark-mode-icon.svg">
-                    </div>
-                    <!-- Moon icon for light mode -->
-                    <div x-show="!darkMode" class="w-6 h-6">
-                        <img id="sunIcon" alt="Sun Icon" src="/path/to/light-mode-icon.svg">
-                    </div>
-                </button>
-            </div>
+            <!-- Mobile Menu Button (Hidden on larger screens) -->
+            <button @click="open = ! open" class="px-3 py-2 text-lg font-medium transition rounded-md md:hidden text-tertiary hover:text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-
-        <!-- Mobile Menu Button (Hidden on larger screens) -->
-        <button @click="open = ! open" class="px-3 py-2 text-lg font-medium transition rounded-md md:hidden text-tertiary hover:text-secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
     </div>
 
     <!-- Mobile Menu (Toggles based on "open" state) -->

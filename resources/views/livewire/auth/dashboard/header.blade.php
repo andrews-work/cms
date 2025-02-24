@@ -1,6 +1,4 @@
-<section x-data="{ darkMode: localStorage.getItem('theme') === 'dark' }"
-         x-init="darkMode = localStorage.getItem('theme') === 'dark';"
-         class="border-b bg-primary dark:bg-primary border-secondary">
+<section x-data="{ open: false, darkMode: localStorage.getItem('theme') === 'dark' }" x-init="darkMode = localStorage.getItem('theme') === 'dark';" class="border-b bg-primary dark:bg-primary border-secondary">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
         <div class="flex items-center justify-between h-16">
@@ -25,13 +23,13 @@
                 <!-- Dark mode profile icon -->
                 <a href="{{ route('profile') }}">
                     <div x-show="darkMode" class="w-6 h-6">
-                        <img id="userDarkIcon" alt="User Icon" src="/path/to/user-dark-icon.svg">
+                        <img id="userDarkIcon" alt="User Icon">
                     </div>
                 </a>
                 <!-- Light mode profile icon -->
                 <a href="{{ route('profile') }}">
                     <div x-show="!darkMode" class="w-6 h-6">
-                        <img id="userLightIcon" alt="User Icon" src="/path/to/user-light-icon.svg">
+                        <img id="userLightIcon" alt="User Icon">
                     </div>
                 </a>
             </div>
