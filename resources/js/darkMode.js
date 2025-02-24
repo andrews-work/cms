@@ -5,25 +5,16 @@ import sunIcon from '../svg/sun.svg';
 import userDarkIcon from '../svg/user-d.svg';
 import userLightIcon from '../svg/user.svg';
 
-// Wait for the DOM to load before initializing icons
-document.addEventListener('DOMContentLoaded', () => {
-    // Set the image sources (only if elements exist)
-    const moonIconElement = document.getElementById('moonIcon');
-    const sunIconElement = document.getElementById('sunIcon');
-    const userDarkIconElement = document.getElementById('userDarkIcon');
-    const userLightIconElement = document.getElementById('userLightIcon');
+// Set the image sources (only if elements exist)
+const moonIconElement = document.getElementById('moonIcon');
+const sunIconElement = document.getElementById('sunIcon');
+const userDarkIconElement = document.getElementById('userDarkIcon');
+const userLightIconElement = document.getElementById('userLightIcon');
 
-    if (moonIconElement) moonIconElement.src = moonIcon;
-    if (sunIconElement) sunIconElement.src = sunIcon;
-    if (userDarkIconElement) userDarkIconElement.src = userDarkIcon;
-    if (userLightIconElement) userLightIconElement.src = userLightIcon;
-
-    // Initialize dark mode toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', toggleDarkMode);
-    }
-});
+if (moonIconElement) moonIconElement.src = moonIcon;
+if (sunIconElement) sunIconElement.src = sunIcon;
+if (userDarkIconElement) userDarkIconElement.src = userDarkIcon;
+if (userLightIconElement) userLightIconElement.src = userLightIcon;
 
 // toggle
 const toggleDarkMode = () => {
@@ -44,5 +35,9 @@ const initializeTheme = () => {
     }
 };
 
-// Run initializeTheme as soon as the script loads
 initializeTheme();
+
+const darkModeToggle = document.getElementById('darkModeToggle');
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+}
