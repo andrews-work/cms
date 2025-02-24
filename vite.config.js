@@ -13,6 +13,6 @@ export default defineConfig({
         }),
     ],
     build: {
-        assetsInclude: ['resources/svg/**/*.svg'],
+        assetsInclude: ['resources/svg/*.svg'],
     },
 });
