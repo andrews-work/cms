@@ -29,6 +29,6 @@
         <!-- Footer Component -->
         <livewire:components.footer />
 
-        <script src="{{ asset('js/darkMode.js') }}"></script>
+        <!-- <script src="{{ asset('js/darkMode.js') }}"></script> -->
     </body>
 </html>
