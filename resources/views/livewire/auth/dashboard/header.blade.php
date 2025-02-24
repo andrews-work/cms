@@ -23,13 +23,13 @@
                 <!-- Dark mode profile icon -->
                 <a href="{{ route('profile') }}">
                     <div x-show="darkMode" class="w-6 h-6">
-                        <img id="userLightIcon" alt="User Icon">
+                        <img id="userDarkIcon" alt="User Icon">
                     </div>
                 </a>
                 <!-- Light mode profile icon -->
                 <a href="{{ route('profile') }}">
                     <div x-show="!darkMode" class="w-6 h-6">
-                        <img id="userSunIcon" alt="User Icon">
+                        <img id="userLightIcon" alt="User Icon">
                     </div>
                 </a>
             </div>
