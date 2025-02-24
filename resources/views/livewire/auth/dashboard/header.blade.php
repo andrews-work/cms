@@ -33,7 +33,6 @@
                         <img src="{{ Vite::asset('resources/svg/user.svg') }}" alt="user icon">
                     </div>
                 </a>
-
             </div>
 
         </div>

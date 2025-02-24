@@ -4,4 +4,3 @@
 2. height of pages
 3. sessions / cookie
 4. register page not done5
-5. testing the psr-4 for meetings
