@@ -32,6 +32,5 @@
             </main>
         </div>
 
-        <!-- <script src="{{ asset('js/darkMode.js') }}"></script> -->
     </body>
 </html>

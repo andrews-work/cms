@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="{{ url('/') }}" class="text-2xl font-bold transition text-secondary dark:text-secondary hover:text-tertiary dark:hover:text-tertiary">
-                    YourApp
+                    YourAppLogo
                 </a>
             </div>
 

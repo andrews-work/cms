@@ -11,6 +11,11 @@ document.getElementById('sunIcon').src = sunIcon;
 document.getElementById('userDarkIcon').src = userDarkIcon;
 document.getElementById('userLightIcon').src = userLightIcon;
 
+if (moonIconElement) moonIconElement.src = moonIcon;
+if (sunIconElement) sunIconElement.src = sunIcon;
+if (userDarkIconElement) userDarkIconElement.src = userDarkIcon;
+if (userLightIconElement) userLightIconElement.src = userLightIcon;
+
 // toggle
 const toggleDarkMode = () => {
     const htmlElement = document.documentElement;
