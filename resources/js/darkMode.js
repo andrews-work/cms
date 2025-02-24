@@ -1,11 +1,15 @@
+console.log('darkMode.js - c');
+
 import moonIcon from '../svg/moon.svg';
 import sunIcon from '../svg/sun.svg';
-
-console.log('darkMode.js - c');
+import userDarkIcon from '../svg/user-d.svg';
+import userLightIcon from '../svg/user.svg';
 
 // Set the image sources
 document.getElementById('moonIcon').src = moonIcon;
 document.getElementById('sunIcon').src = sunIcon;
+document.getElementById('userDarkIcon').src = userDarkIcon;
+document.getElementById('userLightIcon').src = userLightIcon;
 
 // toggle
 const toggleDarkMode = () => {
