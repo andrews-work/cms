@@ -5,11 +5,11 @@ import sunIcon from '../svg/sun.svg';
 import userDarkIcon from '../svg/user-d.svg';
 import userLightIcon from '../svg/user.svg';
 
-// Set the image sources
-document.getElementById('moonIcon').src = moonIcon;
-document.getElementById('sunIcon').src = sunIcon;
-document.getElementById('userDarkIcon').src = userDarkIcon;
-document.getElementById('userLightIcon').src = userLightIcon;
+// Set the image sources (only if elements exist)
+const moonIconElement = document.getElementById('moonIcon');
+const sunIconElement = document.getElementById('sunIcon');
+const userDarkIconElement = document.getElementById('userDarkIcon');
+const userLightIconElement = document.getElementById('userLightIcon');
 
 if (moonIconElement) moonIconElement.src = moonIcon;
 if (sunIconElement) sunIconElement.src = sunIcon;
@@ -37,4 +37,7 @@ const initializeTheme = () => {
 
 initializeTheme();
 
-document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+const darkModeToggle = document.getElementById('darkModeToggle');
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+}
